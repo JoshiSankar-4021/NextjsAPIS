@@ -18,4 +18,11 @@ model user_registration{
   userid Int @id @default(autoincrement())
   name String
   email String
+  posts post[]
 }
+ model post{
+  postid    Int @id @default(autoincrement())
+  post      String
+  postedby  Int
+  user      user_registration @relation(fields:[postedby],references:[userid])
+ }
